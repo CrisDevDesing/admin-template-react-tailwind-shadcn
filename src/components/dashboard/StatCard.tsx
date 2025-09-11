@@ -8,7 +8,7 @@ interface StatCardProps {
 
 export function StatCard({ title, value, icon }: StatCardProps) {
   return (
-    <Card className="shadow-sm">
+    <Card className="shadow-sm dark:bg-gray-800">
       <CardContent className="flex items-center justify-between p-4">
         <div>
           <p className="text-sm text-gray-500">{title}</p>
@@ -16,6 +16,6 @@ export function StatCard({ title, value, icon }: StatCardProps) {
         </div>
         {icon && <div className="text-blue-600">{icon}</div>}
       </CardContent>
-    </Card>
+    </Card> 
   );
 }

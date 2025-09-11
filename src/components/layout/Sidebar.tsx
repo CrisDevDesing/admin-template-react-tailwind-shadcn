@@ -37,7 +37,7 @@ export function Sidebar() {
       {/* Sidebar */}
       <aside
         className={`fixed lg:static z-50 top-0 left-0 h-full w-64 p-4 shadow-md transform transition-transform 
-          bg-white dark:bg-dark ${
+          bg-white shadow-sm dark:bg-gray-800 ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           } lg:translate-x-0`}
       >

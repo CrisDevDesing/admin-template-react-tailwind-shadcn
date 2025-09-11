@@ -1,23 +1,32 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
-import { globalIgnores } from 'eslint/config'
+// @ts-check
+import tseslint from "typescript-eslint";
+import reactX from "eslint-plugin-react-x";
+import reactDom from "eslint-plugin-react-dom";
 
 export default tseslint.config([
-  globalIgnores(['dist']),
+  // Ignorar a pasta de build
+  { ignores: ["dist"] },
+
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
+      // Regras recomendadas para TS + Type Checking
+      ...tseslint.configs.recommendedTypeChecked,
+      // Se quiseres ser mais restritivo, usa strictTypeChecked
+      // ...tseslint.configs.strictTypeChecked,
+
+      // Regras de estilo opcionais
+      ...tseslint.configs.stylisticTypeChecked,
+
+      // Regras para React e React DOM
+      reactX.configs["recommended-typescript"],
+      reactDom.configs.recommended,
     ],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      parserOptions: {
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
   },
-])
+]);

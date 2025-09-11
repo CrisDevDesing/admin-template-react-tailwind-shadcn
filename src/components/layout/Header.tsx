@@ -8,7 +8,7 @@ export function Header() {
   const { toggle } = useSidebar();
 
   return (
-    <header className="h-16 bg-white dark:bg-dark shadow-sm flex items-center justify-between px-6">
+    <header className="h-16 bg-white shadow-sm dark:bg-gray-800 shadow-sm flex items-center justify-between px-6">
       {/* Botão hambúrguer (mobile) */}
       <button
         onClick={toggle}

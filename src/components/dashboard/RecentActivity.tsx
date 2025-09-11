@@ -8,7 +8,7 @@ const activities = [
 
 export function RecentActivity() {
   return (
-    <Card className="shadow-sm">
+    <Card className="shadow-sm shadow-sm dark:bg-gray-800">
       <CardHeader>
         <CardTitle>Atividades Recentes</CardTitle>
       </CardHeader>
