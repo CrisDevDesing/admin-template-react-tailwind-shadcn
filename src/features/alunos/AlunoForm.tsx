@@ -57,7 +57,7 @@ export function AlunoForm({ defaultValues, onSubmit }: AlunoFormProps) {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
     
               {/* FOTO + STATUS FIXOS NO TOPO */}
-              <div className="flex items-start gap-6 border rounded-lg bg-white shadow-sm p-6">
+              <div className="flex items-start gap-6 border rounded-lg  bg-white dark:bg-gray-800  shadow-sm p-6">
                 {/* FOTO */}
                 <div className="space-y-3">
                   <FormLabel>Foto do Aluno</FormLabel>
@@ -72,7 +72,7 @@ export function AlunoForm({ defaultValues, onSubmit }: AlunoFormProps) {
                   control={form.control}
                   name="status"
                   render={({ field }) => (
-                    <FormItem className="w-48">
+                    <FormItem className="w-48 text-white ml-auto">
                       <FormLabel>Status</FormLabel>
                       <FormControl>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -80,7 +80,7 @@ export function AlunoForm({ defaultValues, onSubmit }: AlunoFormProps) {
                             <SelectValue placeholder="Selecione o status" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="1">Ativo</SelectItem>
+                            <SelectItem value="1" >Ativo</SelectItem>
                             <SelectItem value="0">Inativo</SelectItem>
                           </SelectContent>
                         </Select>
@@ -93,7 +93,7 @@ export function AlunoForm({ defaultValues, onSubmit }: AlunoFormProps) {
               {/* ACCORDION SECTIONS */}
               <Accordion type="multiple" className="space-y-4">
                 {/* INFORMAÇÕES PESSOAIS */}
-                <AccordionItem value="pessoal" className="border rounded-lg bg-white shadow-sm">
+                <AccordionItem value="pessoal" className="border rounded-lg bg-white dark:bg-gray-800 dark:text-white shadow-sm">
                   <AccordionTrigger className="px-6 py-4 text-lg font-semibold">Informações Pessoais</AccordionTrigger>
                   <AccordionContent className="px-6 pb-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -129,7 +129,7 @@ export function AlunoForm({ defaultValues, onSubmit }: AlunoFormProps) {
                 </AccordionItem>
     
                 {/* CONTATO */}
-                <AccordionItem value="contato" className="border rounded-lg bg-white shadow-sm">
+                <AccordionItem value="contato" className="border rounded-lg bg-white dark:bg-gray-800 dark:text-white shadow-sm">
                   <AccordionTrigger className="px-6 py-4 text-lg font-semibold">Contato</AccordionTrigger>
                   <AccordionContent className="px-6 pb-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -157,7 +157,7 @@ export function AlunoForm({ defaultValues, onSubmit }: AlunoFormProps) {
                 </AccordionItem>
     
                 {/* FAMÍLIA */}
-                <AccordionItem value="familia" className="border rounded-lg bg-white shadow-sm">
+                <AccordionItem value="familia" className="border rounded-lg bg-white dark:bg-gray-800 dark:text-white shadow-sm">
                   <AccordionTrigger className="px-6 py-4 text-lg font-semibold">Família</AccordionTrigger>
                   <AccordionContent className="px-6 pb-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -178,7 +178,7 @@ export function AlunoForm({ defaultValues, onSubmit }: AlunoFormProps) {
                 </AccordionItem>
     
                 {/* PROFISSÃO */}
-                <AccordionItem value="profissao" className="border rounded-lg bg-white shadow-sm">
+                <AccordionItem value="profissao" className="border rounded-lg bg-white dark:bg-gray-800 dark:text-white shadow-sm">
                   <AccordionTrigger className="px-6 py-4 text-lg font-semibold">Profissão</AccordionTrigger>
                   <AccordionContent className="px-6 pb-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -199,7 +199,7 @@ export function AlunoForm({ defaultValues, onSubmit }: AlunoFormProps) {
                 </AccordionItem>
     
                 {/* CURSO */}
-                <AccordionItem value="curso" className="border rounded-lg bg-white shadow-sm">
+                <AccordionItem value="curso" className="border rounded-lg bg-white dark:bg-gray-800 dark:text-white shadow-sm">
                   <AccordionTrigger className="px-6 py-4 text-lg font-semibold">Curso</AccordionTrigger>
                   <AccordionContent className="px-6 pb-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -2,13 +2,13 @@ import { Notifications } from "./Notifications";
 import { UserMenu } from "./UserMenu";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useSidebar } from "@/store/useSidebar";
-import { Menu } from "lucide-react";
+import { Menu, MoreVertical } from "lucide-react";
 
 export function Header() {
-  const { toggle } = useSidebar();
+  const { toggle, toggleCollapse } = useSidebar();
 
   return (
-    <header className="h-16 bg-white shadow-sm dark:bg-gray-800 shadow-sm flex items-center justify-between px-6">
+    <header className="h-16 bg-white shadow-sm dark:bg-gray-800 flex items-center justify-between px-6">
       {/* Botão hambúrguer (mobile) */}
       <button
         onClick={toggle}
@@ -25,6 +25,14 @@ export function Header() {
         <ThemeToggle />
         <Notifications />
         <UserMenu />
+
+        {/* Botão 3 pontinhos para colapsar sidebar (desktop only) */}
+        <button
+          onClick={toggleCollapse}
+          className="hidden lg:flex p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+        >
+          <MoreVertical size={22} />
+        </button>
       </div>
     </header>
   );
