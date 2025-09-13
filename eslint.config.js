@@ -1,32 +1,25 @@
-// @ts-check
-import tseslint from "typescript-eslint";
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
 export default tseslint.config([
-  // Ignorar a pasta de build
-  { ignores: ["dist"] },
-
+  globalIgnores(['dist']),
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ['**/*.{ts,tsx}'],
     extends: [
-      // Regras recomendadas para TS + Type Checking
-      ...tseslint.configs.recommendedTypeChecked,
-      // Se quiseres ser mais restritivo, usa strictTypeChecked
-      // ...tseslint.configs.strictTypeChecked,
+      // Other configs...
 
-      // Regras de estilo opcionais
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
       ...tseslint.configs.stylisticTypeChecked,
 
-      // Regras para React e React DOM
-      reactX.configs["recommended-typescript"],
-      reactDom.configs.recommended,
+      // Other configs...
     ],
     languageOptions: {
       parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
+      // other options...
     },
   },
-]);
+])
