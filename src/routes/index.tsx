@@ -26,10 +26,17 @@ import TiposPagamentoPage from "@/features/tipos-pagamento/TiposPagamentoPage";
 import CategoriasPage from "@/features/categorias/CategoriaPage";
 import ImpostosPage from "@/features/impostos/ImpostosPage";
 import ProdutosPage from "@/features/produtos";
+import ArmazensPage from "@/features/armazens/ArmazemPage";
+import AuthLayout from "@/layouts/AuthLayout";
+import LoginPage from "@/features/auth/LoginPage";
+import SuperAdminLayout from "@/layouts/SuperAdminLayout";
+import SuperAdminDashboard from "@/features/admin/SuperAdminDashboard";
 
 export default function AppRoutes() {
   return (
     <Routes>
+
+      {/* Rotas Privadas */}
       <Route element={<AdminLayout />}>
         <Route path="/" element={<Dashboard />} />
         {/* CRUD Veículos */}
@@ -37,43 +44,55 @@ export default function AppRoutes() {
         <Route path="/veiculos/novo" element={<NovoVeiculo />} />
         <Route path="/veiculos/:id/editar" element={<EditarVeiculo />} />
         {/* CRUD Alunos */}
-          <Route path="/alunos" element={<AlunosPage />} />
-          <Route path="/alunos/novo" element={<NovoAluno />} />
-          <Route path="/alunos/:id/editar" element={<EditarAluno />} />
+        <Route path="/alunos" element={<AlunosPage />} />
+        <Route path="/alunos/novo" element={<NovoAluno />} />
+        <Route path="/alunos/:id/editar" element={<EditarAluno />} />
         {/* CRUD Instrutores */}
-          <Route path="/instrutores" element={<InstrutoresPage />} />
-          <Route path="/instrutores/novo" element={<NovoInstrutor />} />
-          <Route path="/instrutores/:id/editar" element={<EditarInstrutor />} />
-          {/* CRUD Aulas */} 
-          <Route path="/aulas" element={<AulasPage />} /> 
-          <Route path="/aulas/nova" element={<NovaAula />} /> 
-          <Route path="/aulas/:id/editar" element={<EditarAula />} />
-         {/* CRUD Exames */} 
-          <Route path="/exames" element={<ExamesPage />} /> 
-          <Route path="/exames/novo" element={<NovoExame />} /> 
-          <Route path="/exames/:id/editar" element={<EditarExame />} />
-          {/* CRUD Pagamentos */} 
+        <Route path="/instrutores" element={<InstrutoresPage />} />
+        <Route path="/instrutores/novo" element={<NovoInstrutor />} />
+        <Route path="/instrutores/:id/editar" element={<EditarInstrutor />} />
+        {/* CRUD Aulas */}
+        <Route path="/aulas" element={<AulasPage />} />
+        <Route path="/aulas/nova" element={<NovaAula />} />
+        <Route path="/aulas/:id/editar" element={<EditarAula />} />
+        {/* CRUD Exames */}
+        <Route path="/exames" element={<ExamesPage />} />
+        <Route path="/exames/novo" element={<NovoExame />} />
+        <Route path="/exames/:id/editar" element={<EditarExame />} />
+        {/* CRUD Pagamentos */}
         <Route path="/pagamentos" element={<PagamentosPage />} />
-          <Route path="/pagamentos/novo" element={<NovoPagamento />} /> 
-          <Route path="/pagamentos/:id/editar" element={<EditarPagamento />} />
-          
-          {/* CRUD Setting */} 
-          <Route path="settings">
-            <Route index element={<SettingsPage />} />
-          </Route>
-          <Route path="settings">
-            <Route path="empresa" element={<EmpresaPage />} />
-            {/* aqui vamos ligar os outros módulos mais tarde */}
-            <Route path="utilizadores" element={<UtilizadoresPage />} /> 
-            <Route path="tipos-pagamento" element={<TiposPagamentoPage />} />
-             <Route path="categorias" element={<CategoriasPage />} />
-             <Route path="impostos" element={<ImpostosPage />} />
-            <Route path="produtos" element={<ProdutosPage />} /> 
-            {/* <Route path="armazens" element={<ArmazensPage />} /> */}
-          </Route>
+        <Route path="/pagamentos/novo" element={<NovoPagamento />} />
+        <Route path="/pagamentos/:id/editar" element={<EditarPagamento />} />
+
+        {/* CRUD Setting */}
+        <Route path="settings">
+          <Route index element={<SettingsPage />} />
+        </Route>
+        <Route path="settings">
+          <Route path="empresa" element={<EmpresaPage />} />
+          {/* aqui vamos ligar os outros módulos mais tarde */}
+          <Route path="utilizadores" element={<UtilizadoresPage />} />
+          <Route path="tipos-pagamento" element={<TiposPagamentoPage />} />
+          <Route path="categorias" element={<CategoriasPage />} />
+          <Route path="impostos" element={<ImpostosPage />} />
+          <Route path="produtos" element={<ProdutosPage />} />
+          <Route path="armazens" element={<ArmazensPage />} />
+        </Route>
         {/* Page Not Find */}
         <Route path="*" element={<p>Página não encontrada</p>} />
       </Route>
+
+
+      {/* Rotas públicas */}
+      <Route element={<AuthLayout />}>
+        <Route path="/login" element={<LoginPage />} />
+      </Route>
+
+      <Route element={<SuperAdminLayout />}>
+        <Route path="/super-admin" element={<SuperAdminDashboard />} />
+        {/* outras páginas de super admin */}
+      </Route>
+
     </Routes>
   );
 }
