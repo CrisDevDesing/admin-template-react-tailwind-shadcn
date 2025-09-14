@@ -36,6 +36,7 @@ const settingsSubmenu = [
   { name: "Categorias", path: "/settings/categorias", icon: Layers },
   { name: "Produtos", path: "/settings/produtos", icon: Package },
   { name: "Armazéns", path: "/settings/armazens", icon: Warehouse },
+  { name: "Impostos", path: "/settings/impostos", icon: Warehouse },
 ];
 
 export function Sidebar() {

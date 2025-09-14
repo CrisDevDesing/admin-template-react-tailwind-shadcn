@@ -20,13 +20,18 @@ import NovoExame from "@/features/exames/NovoExame";
 import EditarExame from "@/features/exames/EditarExame";
 import NovoPagamento from "@/features/pagamentos/NovoPagamento";
 import EditarPagamento from "@/features/pagamentos/EditarPagamento";
+import EmpresaPage from "@/features/empresa/EmpresaPage";
+import UtilizadoresPage from "@/features/utilizadores/UtilizadoresPage";
+import TiposPagamentoPage from "@/features/tipos-pagamento/TiposPagamentoPage";
+import CategoriasPage from "@/features/categorias/CategoriaPage";
+import ImpostosPage from "@/features/impostos/ImpostosPage";
+import ProdutosPage from "@/features/produtos";
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route element={<AdminLayout />}>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/settings" element={<SettingsPage />} />
         {/* CRUD Veículos */}
         <Route path="/veiculos" element={<VeiculosPage />} />
         <Route path="/veiculos/novo" element={<NovoVeiculo />} />
@@ -51,6 +56,21 @@ export default function AppRoutes() {
         <Route path="/pagamentos" element={<PagamentosPage />} />
           <Route path="/pagamentos/novo" element={<NovoPagamento />} /> 
           <Route path="/pagamentos/:id/editar" element={<EditarPagamento />} />
+          
+          {/* CRUD Setting */} 
+          <Route path="settings">
+            <Route index element={<SettingsPage />} />
+          </Route>
+          <Route path="settings">
+            <Route path="empresa" element={<EmpresaPage />} />
+            {/* aqui vamos ligar os outros módulos mais tarde */}
+            <Route path="utilizadores" element={<UtilizadoresPage />} /> 
+            <Route path="tipos-pagamento" element={<TiposPagamentoPage />} />
+             <Route path="categorias" element={<CategoriasPage />} />
+             <Route path="impostos" element={<ImpostosPage />} />
+            <Route path="produtos" element={<ProdutosPage />} /> 
+            {/* <Route path="armazens" element={<ArmazensPage />} /> */}
+          </Route>
         {/* Page Not Find */}
         <Route path="*" element={<p>Página não encontrada</p>} />
       </Route>
