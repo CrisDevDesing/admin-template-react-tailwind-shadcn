@@ -36,6 +36,7 @@ import EstatisticasPage from "@/features/super-admin/EstatisticasPage";
 import AuditoriaPage from "@/features/super-admin/AuditoriaPage";
 import UsersPage from "@/features/super-admin/UsersPage";
 import { ProtectedRoute } from "./ProtectedRoute";
+import RelatoriosPage from "@/features/relatorios/RelatoriosPage";
 
 export default function AppRoutes() {
   return (
@@ -84,6 +85,7 @@ export default function AppRoutes() {
             <Route path="produtos" element={<ProdutosPage />} />
             <Route path="armazens" element={<ArmazensPage />} />
           </Route>
+          <Route path="relatorios" element={<RelatoriosPage />} />
           {/* Page Not Find */}
           <Route path="*" element={<p>Página não encontrada</p>} />
         </Route>
