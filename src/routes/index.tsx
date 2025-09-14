@@ -30,56 +30,64 @@ import ArmazensPage from "@/features/armazens/ArmazemPage";
 import AuthLayout from "@/layouts/AuthLayout";
 import LoginPage from "@/features/auth/LoginPage";
 import SuperAdminLayout from "@/layouts/SuperAdminLayout";
-import SuperAdminDashboard from "@/features/admin/SuperAdminDashboard";
+import SuperAdminDashboard from "@/features/super-admin/SuperAdminDashboard";
+import EmpresasPage from "@/features/super-admin/EmpresasPage";
+import EstatisticasPage from "@/features/super-admin/EstatisticasPage";
+import AuditoriaPage from "@/features/super-admin/AuditoriaPage";
+import UsersPage from "@/features/super-admin/UsersPage";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export default function AppRoutes() {
   return (
     <Routes>
 
       {/* Rotas Privadas */}
-      <Route element={<AdminLayout />}>
-        <Route path="/" element={<Dashboard />} />
-        {/* CRUD Veículos */}
-        <Route path="/veiculos" element={<VeiculosPage />} />
-        <Route path="/veiculos/novo" element={<NovoVeiculo />} />
-        <Route path="/veiculos/:id/editar" element={<EditarVeiculo />} />
-        {/* CRUD Alunos */}
-        <Route path="/alunos" element={<AlunosPage />} />
-        <Route path="/alunos/novo" element={<NovoAluno />} />
-        <Route path="/alunos/:id/editar" element={<EditarAluno />} />
-        {/* CRUD Instrutores */}
-        <Route path="/instrutores" element={<InstrutoresPage />} />
-        <Route path="/instrutores/novo" element={<NovoInstrutor />} />
-        <Route path="/instrutores/:id/editar" element={<EditarInstrutor />} />
-        {/* CRUD Aulas */}
-        <Route path="/aulas" element={<AulasPage />} />
-        <Route path="/aulas/nova" element={<NovaAula />} />
-        <Route path="/aulas/:id/editar" element={<EditarAula />} />
-        {/* CRUD Exames */}
-        <Route path="/exames" element={<ExamesPage />} />
-        <Route path="/exames/novo" element={<NovoExame />} />
-        <Route path="/exames/:id/editar" element={<EditarExame />} />
-        {/* CRUD Pagamentos */}
-        <Route path="/pagamentos" element={<PagamentosPage />} />
-        <Route path="/pagamentos/novo" element={<NovoPagamento />} />
-        <Route path="/pagamentos/:id/editar" element={<EditarPagamento />} />
+      <Route element={<ProtectedRoute allowedRoles={["admin", "super_admin"]} />}>
+        <Route element={<AdminLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          {/* CRUD Veículos */}
+          <Route path="/veiculos" element={<VeiculosPage />} />
+          <Route path="/veiculos/novo" element={<NovoVeiculo />} />
+          <Route path="/veiculos/:id/editar" element={<EditarVeiculo />} />
+          {/* CRUD Alunos */}
+          <Route path="/alunos" element={<AlunosPage />} />
+          <Route path="/alunos/novo" element={<NovoAluno />} />
+          <Route path="/alunos/:id/editar" element={<EditarAluno />} />
+          {/* CRUD Instrutores */}
+          <Route path="/instrutores" element={<InstrutoresPage />} />
+          <Route path="/instrutores/novo" element={<NovoInstrutor />} />
+          <Route path="/instrutores/:id/editar" element={<EditarInstrutor />} />
+          {/* CRUD Aulas */}
+          <Route path="/aulas" element={<AulasPage />} />
+          <Route path="/aulas/nova" element={<NovaAula />} />
+          <Route path="/aulas/:id/editar" element={<EditarAula />} />
+          {/* CRUD Exames */}
+          <Route path="/exames" element={<ExamesPage />} />
+          <Route path="/exames/novo" element={<NovoExame />} />
+          <Route path="/exames/:id/editar" element={<EditarExame />} />
+          {/* CRUD Pagamentos */}
+          <Route path="/pagamentos" element={<PagamentosPage />} />
+          <Route path="/pagamentos/novo" element={<NovoPagamento />} />
+          <Route path="/pagamentos/:id/editar" element={<EditarPagamento />} />
 
-        {/* CRUD Setting */}
-        <Route path="settings">
-          <Route index element={<SettingsPage />} />
+          {/* CRUD Setting */}
+          <Route path="settings">
+            <Route index element={<SettingsPage />} />
+          </Route>
+          <Route path="settings">
+            <Route path="empresa" element={<EmpresaPage />} />
+            {/* aqui vamos ligar os outros módulos mais tarde */}
+            <Route path="utilizadores" element={<UtilizadoresPage />} />
+            <Route path="tipos-pagamento" element={<TiposPagamentoPage />} />
+            <Route path="categorias" element={<CategoriasPage />} />
+            <Route path="impostos" element={<ImpostosPage />} />
+            <Route path="produtos" element={<ProdutosPage />} />
+            <Route path="armazens" element={<ArmazensPage />} />
+          </Route>
+          {/* Page Not Find */}
+          <Route path="*" element={<p>Página não encontrada</p>} />
         </Route>
-        <Route path="settings">
-          <Route path="empresa" element={<EmpresaPage />} />
-          {/* aqui vamos ligar os outros módulos mais tarde */}
-          <Route path="utilizadores" element={<UtilizadoresPage />} />
-          <Route path="tipos-pagamento" element={<TiposPagamentoPage />} />
-          <Route path="categorias" element={<CategoriasPage />} />
-          <Route path="impostos" element={<ImpostosPage />} />
-          <Route path="produtos" element={<ProdutosPage />} />
-          <Route path="armazens" element={<ArmazensPage />} />
-        </Route>
-        {/* Page Not Find */}
-        <Route path="*" element={<p>Página não encontrada</p>} />
+
       </Route>
 
 
@@ -88,9 +96,15 @@ export default function AppRoutes() {
         <Route path="/login" element={<LoginPage />} />
       </Route>
 
-      <Route element={<SuperAdminLayout />}>
-        <Route path="/super-admin" element={<SuperAdminDashboard />} />
-        {/* outras páginas de super admin */}
+      <Route element={<ProtectedRoute allowedRoles={["super_admin"]} />}>
+        <Route element={<SuperAdminLayout />}>
+          <Route path="/super-admin" element={<SuperAdminDashboard />} />
+          <Route path="/super-admin/dashboard" element={<SuperAdminDashboard />} />
+          <Route path="/super-admin/empresas" element={<EmpresasPage />} />
+          <Route path="/super-admin/utilizadores" element={<UsersPage />} />
+          <Route path="/super-admin/estatisticas" element={<EstatisticasPage />} />
+          <Route path="/super-admin/auditoria" element={<AuditoriaPage />} />
+        </Route>
       </Route>
 
     </Routes>
